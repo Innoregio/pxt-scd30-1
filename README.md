@@ -1,3 +1,3 @@
-# pxt-scd30
+# scd30
 
 makecode Blocks for scd30
