@@ -3,7 +3,20 @@
  */
 //%color=#444444 icon="\uf185" block="scd30"
 namespace scd30 {
-
+    
+    let temperature: number = 0
+    let humidity: number = 0
+    let co2: number = 0
+    let buf = pins.createBuffer(18)
+    let tbuf = pins.createBuffer(4)
+    
+    control.inBackground(() => {
+        enableContinuousMeasurement()
+        while (true) {
+            readMeasurement()
+        }
+    })
+    
     function enableContinuousMeasurement(){
         let commandBuffer = pins.createBuffer(5)
 
@@ -29,12 +42,6 @@ namespace scd30 {
             return false
         }
     }
-
-    let temperature: number = 0
-    let humidity: number = 0
-    let co2: number = 0
-    let buf = pins.createBuffer(18)
-    let tbuf = pins.createBuffer(4)
 
     function readMeasurement(){
         while(readReady() == false){
@@ -98,11 +105,4 @@ namespace scd30 {
     export function readHumidity(): number{
         return humidity
     }
-
-    control.inBackground(() => {
-        enableContinuousMeasurement()
-        while (true) {
-            readMeasurement()
-        }
-    })
 } 
