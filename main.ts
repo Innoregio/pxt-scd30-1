@@ -17,7 +17,7 @@ namespace scd30 {
         }
     })
     
-    function enableContinuousMeasurement(){
+    function enableContinuousMeasurement(): void{
         let commandBuffer = pins.createBuffer(5)
 
         commandBuffer[0] = 0x00 
@@ -43,7 +43,7 @@ namespace scd30 {
         }
     }
 
-    function readMeasurement(){
+    function readMeasurement(): void{
         while(readReady() == false){
             //serial.writeLine("waiting in: readMeasurement()")
         }
