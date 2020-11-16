@@ -7,8 +7,6 @@ namespace scd30 {
     let temperature: number = 0
     let humidity: number = 0
     let co2: number = 0
-    let buf = pins.createBuffer(18)
-    let tbuf = pins.createBuffer(4)
     
     control.inBackground(() => {
         enableContinuousMeasurement()
@@ -47,6 +45,8 @@ namespace scd30 {
         while(readReady() == false){
             //serial.writeLine("waiting in: readMeasurement()")
         }
+        let buf = pins.createBuffer(18)
+        let tbuf = pins.createBuffer(4)
         pins.i2cWriteNumber(0x61, 0x0300, NumberFormat.UInt16BE, false)
         basic.pause(10)
         buf = pins.i2cReadBuffer(0x61, 18, false)
