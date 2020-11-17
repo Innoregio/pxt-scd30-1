@@ -1,8 +1,8 @@
 /**
- * scd30 block
+ * SCD30 block
  */
-//%color=#444444 icon="\uf185" block="scd30"
-namespace scd30 {
+//%color=#444444 icon="\uf185" block="SCD30"
+namespace SCD30 {
     
     let temperature: number = 0
     let humidity: number = 0
